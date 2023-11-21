@@ -8,7 +8,6 @@ function Footer() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         <div className="flex flex-col items-center justify-self-center">
           <img srcSet={Logo} alt="logo" className="object-cover h-24 w-72 lg:h-32 lg:w-96" />
-          <p>placeholder</p>
         </div>
         <div className="px-20 lg:px-0">
           <h2 className="text-2xl font-bold">Liên hệ với chúng tôi</h2>
