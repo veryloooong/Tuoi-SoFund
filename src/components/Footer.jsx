@@ -1,21 +1,30 @@
 // import React, { useState, useEffect } from "react";
+import Logo from "../images/logo-bg.png";
 
 function Footer() {
   let year = new Date().getFullYear();
   return (
-    <footer className="fixed bottom-0 w-full text-center text-violet-200 text-sm p-3 bg-violet-900">
-      &copy; {year} Copyright{" "}
-      <a className="text-cyan-200" href="https://github.com/afif-dev" target="_blank" rel="noreferrer">
-        Afif Dev
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block mx-1 align-top" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-        </svg>
-      </a>
-      {" # "}
-      <a className="text-cyan-200" href="https://github.com/afif-dev/donation-site-stripe-reactjs" target="_blank" rel="noreferrer">
-        GitHub Repo
-      </a>
+    <footer className="w-full min-h-[20vh] text-white p-5 lg:p-10 bg-[#38a3a5]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <div className="flex flex-col items-center justify-self-center">
+          <img srcSet={Logo} alt="logo" className="object-cover h-24 w-72 lg:h-32 lg:w-96" />
+        </div>
+        <div className="px-20 lg:px-0">
+          <h2 className="text-2xl font-bold">Liên hệ với chúng tôi</h2>
+          <br />
+          <p className="flex flex-row gap-3">
+            <svg className="w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="000000">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <rect x="3" y="5" width="18" height="14" rx="2" stroke="#ffffff" stroke-width="2" stroke-linecap="round"></rect>
+              </g>
+            </svg>
+            <a href="mailto:hello@tuoisofund.id.vn">hello@tuoisofund.id.vn</a>
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }
