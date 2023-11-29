@@ -21,8 +21,10 @@
 - react-router-dom
 - react-markdown
 
-## Commands (todo)
+## Commands
 
-- Chạy khi code:
+### Back-end
 
-``npm run dev``
+```
+sudo systemctl start mariadb.service
+```
