@@ -5,7 +5,15 @@ export default {
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      colors: {
+        'palette1': '#22577a',
+        'palette2': '#38a3a5',
+        'palette3': '#57cc99',
+        'palette4': '#80ed99',
+        'palette5': '#c7f9cc',
+      },
+    },
   },
   plugins: [],
 }

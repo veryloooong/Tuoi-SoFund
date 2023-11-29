@@ -19,7 +19,6 @@ const AddProject = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // backend doesn't matter yet
     navigate("/todo");
   };
 

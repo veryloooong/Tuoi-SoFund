@@ -52,7 +52,7 @@ function Header() {
             <div className={dropdownClassName}>
               <p>Dành cho dự án</p>
               <br className="lg:hidden" />
-              <div className="lg:invisible lg:absolute flex flex-col gap-4 lg:gap-0 -my-3 lg:my-0 lg:py-1 px-4 rounded group-hover:visible lg:bg-teal-500 lg:shadow">
+              <div className="lg:invisible lg:absolute flex flex-col gap-4 lg:gap-0 -my-3 lg:my-0 lg:py-1 px-4 rounded group-hover:visible lg:bg-palette3 lg:shadow">
                 <NavLink to="/addproject" className="my-2 block lg:text-white">Dự án muốn kêu gọi</NavLink>
                 <NavLink to="/courses" className="my-2 block lg:text-white">Phát triển dự án</NavLink>
               </div>

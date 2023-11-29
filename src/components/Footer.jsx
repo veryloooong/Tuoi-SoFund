@@ -4,13 +4,13 @@ import Logo from "../images/logo-bg.png";
 function Footer() {
   let year = new Date().getFullYear();
   return (
-    <footer className="w-full min-h-[20vh] text-white p-5 lg:p-10 bg-[#38a3a5]">
+    <footer className="w-full min-h-[20vh] text-white p-5 lg:p-10 bg-palette2">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         <div className="flex flex-col items-center justify-self-center">
           <img srcSet={Logo} alt="logo" className="object-cover h-24 w-72 lg:h-32 lg:w-96" />
         </div>
         <div className="px-20 lg:px-0">
-          <h2 className="text-2xl font-bold">Liên hệ với chúng tôi</h2>
+          <h2 className="text-2xl font-bold text-palette5">Liên hệ với chúng tôi</h2>
           <br />
           <p className="flex flex-row gap-3">
             <svg className="w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="000000">

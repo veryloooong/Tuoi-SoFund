@@ -32,11 +32,10 @@ const Projects = () => {
   return (
     <div className="mt-10 pb-10 px-4 md:px-20">
       <div className="flex flex-col xl:flex-row justify-between mb-5 gap-4">
-        <h1 className="text-4xl font-extrabold text-center lg:text-left  text-teal-500">Đóng góp cộng đồng</h1>
-        {/* TODO: add search icon */}
+        <h1 className="text-4xl font-extrabold text-center lg:text-left text-palette3">Đóng góp cộng đồng</h1>
         <div className="w-full xl:w-1/4 flex flex-row gap-3">
           <input className="w-2/3 h-10 px-2 rounded-2xl border-gray-400 border-2" placeholder="Nhập từ khóa..." onChange={e => { setSearchKey(e.target.value) }} onKeyUp={e => { if (e.key === "Enter") { handleSearchClick() } }}></input>
-          <button className="w-1/3 h-10 rounded-2xl bg-teal-600 font-semibold text-white" onClick={handleSearchClick}>Tìm kiếm</button>
+          <button className="w-1/3 h-10 rounded-2xl bg-palette1 font-semibold text-white" onClick={handleSearchClick}>Tìm kiếm</button>
         </div>
       </div>
       {/* TODO: add some smart DB shit */}

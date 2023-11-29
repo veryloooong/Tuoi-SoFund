@@ -8,7 +8,7 @@ const ProjectItem = ({ to, image, children }) => {
         <img className="rounded-2xl shadow-xl object-cover h-40 max-h-40 w-full brightness-75" src={image} />
       </div>
       <NavLink to={to}>
-        <button className="block w-full p-4 bg-teal-600 text-white font-semibold text-sm rounded-full leading-tight" >Đóng góp</button>
+        <button className="block w-full p-4 bg-palette1 text-white font-semibold text-sm rounded-full leading-tight" >Đóng góp</button>
       </NavLink>
     </div>
   )

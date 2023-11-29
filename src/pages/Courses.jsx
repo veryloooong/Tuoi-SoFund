@@ -34,12 +34,12 @@ const Courses = () => {
   return (
     <div className="mt-10 pb-10 px-4 md:px-20">
       <div className="flex flex-col xl:flex-row justify-between mb-5 gap-4">
-        <h1 className="text-4xl font-extrabold text-center lg:text-left  text-teal-500">Phát triển dự án</h1>
+        <h1 className="text-4xl font-extrabold text-center lg:text-left  text-palette3">Phát triển dự án</h1>
         {/* TODO: add search icon */}
         <div className="w-full xl:w-1/4 flex flex-row gap-3">
           {/* search logic goes here */}
           <input className="w-2/3 h-10 px-2 rounded-2xl border-gray-400 border-2" placeholder="Nhập từ khóa..." onChange={e => { setSearchKey(e.target.value) }} onKeyUp={e => { if (e.key === "Enter") { handleSearchClick() } }}></input>
-          <button className="w-1/3 h-10 rounded-2xl bg-teal-600 font-semibold text-white" onClick={handleSearchClick}>Tìm kiếm</button>
+          <button className="w-1/3 h-10 rounded-2xl bg-palette1 font-semibold text-white" onClick={handleSearchClick}>Tìm kiếm</button>
         </div>
       </div>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
@@ -64,7 +64,7 @@ const Courses = () => {
           </CoursesGrid>
         </div>
         {/* news */}
-        <div className="hidden xl:flex xl:flex-col xl:gap-4 rounded-2xl bg-cyan-800 text-white p-8">
+        <div className="hidden xl:flex xl:flex-col xl:gap-4 rounded-2xl bg-palette1 text-white p-8">
           <NewsItem to="/todo" image={NewsImage1}></NewsItem>
           <NewsItem to="/todo" image={NewsImage2}></NewsItem>
         </div>
