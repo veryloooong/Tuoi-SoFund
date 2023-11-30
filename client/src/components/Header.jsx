@@ -30,10 +30,11 @@ function Header() {
             <img srcSet={Logo} alt="Logo" className="object-cover h-16 w-48" />
           </NavLink>
         </div>
-        <div className="flex items-center lg:order-last">
+        <div className="flex gap-3 items-center lg:order-last">
           {/* <div className="">
             <DarkModeToggle />
           </div> */}
+          <NavLink to="/login" className="bg-palette2 text-white font-bold px-8 py-2 rounded-full shadow hover:text-palette5 transition-colors duration-300">Đăng nhập</NavLink>
           <div className="lg:hidden">
             <button onClick={toggleClass} className="flex items-center px-3 py-2 border rounded text-black border-black">
               <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

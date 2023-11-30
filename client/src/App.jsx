@@ -1,17 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/App.scss";
 import Layout from "./pages/Layout";
-import Home from "./pages/Home";
-import Donate from "./pages/Donate";
+import Home from "./pages/static/Home";
+import ProjectPage from "./pages/project/ProjectPage";
 import News from "./pages/News";
-import Pages from "./pages/Pages";
-import Error404 from "./pages/Error404";
+import Pages from "./pages/md/Pages";
+import Error404 from "./pages/static/Error404";
 import Payment from "./pages/Payment";
-import AddProject from "./pages/AddProject";
-import Todo from "./pages/Todo";
-import AboutUs from "./pages/AboutUs";
-import Projects from "./pages/Projects";
-import Courses from "./pages/Courses";
+import AddProject from "./pages/project/AddProject";
+import Todo from "./pages/static/Todo";
+import AboutUs from "./pages/static/AboutUs";
+import Projects from "./pages/project/Projects";
+import Courses from "./pages/course/Courses";
+import Login from "./pages/login/Login";
 
 export default function App() {
   return (
@@ -19,8 +20,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/donate" element={<Donate />} />
           <Route path="/news" element={<News />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/addproject" element={<AddProject />} />
