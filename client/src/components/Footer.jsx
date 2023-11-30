@@ -1,8 +1,5 @@
 // import React, { useState, useEffect } from "react";
-import Logo from "../images/logo-bg.png";
-
 function Footer() {
-  let year = new Date().getFullYear();
   return (
     <footer className="w-full min-h-[20vh] text-white p-5 lg:p-10 bg-palette2">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">

@@ -13,7 +13,7 @@ const Pages = (props) => {
 
   return (
     <div className="prose prose-base dark:prose-invert max-w-full">
-      <ReactMarkdown children={content} />
+      <ReactMarkdown>{content}</ReactMarkdown>
     </div>
   );
 };

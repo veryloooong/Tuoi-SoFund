@@ -24,4 +24,11 @@ const ProjectItem = ({ to, image, children }) => {
   )
 };
 
+
+ProjectItem.propTypes = {
+  to: PropTypes.string,
+  image: PropTypes.string,
+  children: PropTypes.string
+}
+
 export default ProjectItem;

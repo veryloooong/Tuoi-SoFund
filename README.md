@@ -20,6 +20,7 @@
 - autoprefixer
 - react-router-dom
 - react-markdown
+- prop-types
 
 ## Commands
 
@@ -28,3 +29,21 @@
 ```
 sudo systemctl start mariadb.service
 ```
+
+### Front-end
+
+Test:
+
+```
+npm run dev
+```
+
+Chạy trong browser và hot reload.
+
+Build:
+
+```
+npm run build
+```
+
+Thả index.html và đồng bọn vào nơi nào trên code server.

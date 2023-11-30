@@ -1,3 +1,5 @@
+import {PropTypes} from "prop-types";
+
 const CoursesGrid = ({ title, children }) => {
   return (
     <div>
@@ -10,6 +12,11 @@ const CoursesGrid = ({ title, children }) => {
       </div>
     </div>
   )
+}
+
+CoursesGrid.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.string
 }
 
 export default CoursesGrid;

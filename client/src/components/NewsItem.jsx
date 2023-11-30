@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
+// TODO: check this shit out lol
 const NewsItem = ({ to, image, content }) => {
   return (
     <NavLink to={to} className="flex flex-row gap-4 w-full">
@@ -10,6 +12,12 @@ const NewsItem = ({ to, image, content }) => {
       </div>
     </NavLink>
   )
+}
+
+NewsItem.propTypes = {
+  to: PropTypes.string,
+  image: PropTypes.string,
+  content: PropTypes.string
 }
 
 export default NewsItem;
