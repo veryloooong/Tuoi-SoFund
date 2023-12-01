@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Entity
 @Data
 @Accessors(chain = true)
-@Table(name = "project")
+@Table(name = "projects")
 public class Project {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

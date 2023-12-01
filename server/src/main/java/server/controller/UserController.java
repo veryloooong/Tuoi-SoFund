@@ -11,31 +11,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import server.data.Course;
-import server.service.course.CourseService;
+import server.data.User;
+import server.service.user.UserService;
 
 @RestController
-@RequestMapping(path = "/api/courses")
-public class CourseController {
+@RequestMapping(path = "/api/users")
+public class UserController {
   @Autowired
-  private CourseService courseService;
-
-  @GetMapping(value = "/all")
-  public Iterable<Course> getAllCourses() {
-    return courseService.findAllCourses();
-  }
-
+  private UserService userService;
+  
   @GetMapping(value = "/{id}")
-  public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
-    Optional<Course> course = courseService.findCourseById(id);
+  public ResponseEntity<User> getUser(@PathVariable Long id) {
+    Optional<User> user = userService.findUserById(id);
 
-    if (course.isPresent()) {
-      return new ResponseEntity<Course>(course.get(), HttpStatus.OK);
+    if (user.isPresent()) {
+      return new ResponseEntity<User>(user.get(), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+  }
+  
+  @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<User> createUser(@RequestBody User newUser) {
+    return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
   }
 }

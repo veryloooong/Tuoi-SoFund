@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS project (
+CREATE OR REPLACE TABLE projects (
   id SERIAL PRIMARY KEY,
   title NVARCHAR(300) NOT NULL,
   description TEXT,
@@ -7,23 +7,35 @@ CREATE TABLE IF NOT EXISTS project (
   current_fund INT8 UNSIGNED DEFAULT 0,
   goal_fund INT8 UNSIGNED DEFAULT 0
 );
-CREATE TABLE IF NOT EXISTS course (
+CREATE OR REPLACE TABLE courses (
   id SERIAL PRIMARY KEY,
   title NVARCHAR(300) NOT NULL,
   description TEXT,
   price INT UNSIGNED DEFAULT 0
 );
-CREATE TABLE IF NOT EXISTS user (
+CREATE OR REPLACE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(20),
-  email VARCHAR(100)
+  name NVARCHAR(255),
+  username VARCHAR(30) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  creation_time TIMESTAMP NOT NULL DEFAULT current_timestamp(),
+  deleted BOOLEAN
 );
-CREATE TABLE IF NOT EXISTS donation (
-  donation_id SERIAL PRIMARY KEY,
+CREATE OR REPLACE TABLE donations (
+  id SERIAL PRIMARY KEY,
   amount INT UNSIGNED DEFAULT 0,
   donation_time DATETIME NOT NULL,
   user_id BIGINT UNSIGNED NOT NULL,
   project_id BIGINT UNSIGNED NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (project_id) REFERENCES projects(id)
-)
+);
+CREATE OR REPLACE TABLE comments (
+  id SERIAL PRIMARY KEY,
+  user_id BIGINT UNSIGNED NOT NULL,
+  project_id BIGINT UNSIGNED NOT NULL,
+  content TEXT NOT NULL,
+  comment_time TIMESTAMP NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (project_id) REFERENCES projects(id)
+);
