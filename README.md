@@ -23,6 +23,7 @@
 - prop-types
 - jwt-decode
 - @react-oauth/google
+- axios
 
 ## Commands
 
