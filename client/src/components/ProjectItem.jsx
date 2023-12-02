@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { PropTypes } from "prop-types";
 
 const ProjectItem = ({ to, image, children }) => {
   const [loaded, setLoaded] = useState(false);

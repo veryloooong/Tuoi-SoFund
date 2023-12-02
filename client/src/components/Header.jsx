@@ -1,8 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../images/logo2.png";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import axios from "axios"; 
 
 function Header() {
+  const login = useGoogleLogin({
+    // INFO: Cái này là implicit flow, không nối được với backend
+    onSuccess: async (responseToken) => {
+      console.log(responseToken);
+      const userInfo = await axios.get(
+        "https://www.googleapis.com/oauth2/v3/userinfo",
+        { headers: { Authorization: `Bearer ${responseToken.access_token}` } }
+      );
+      
+      console.log(userInfo.data);
+    },
+    onError: () => {
+      console.log("Error")
+    },
+  });
+  
+  const codeLogin = useGoogleLogin({
+    // INFO: cái này cần nối với backend để trả về access / refresh token
+    flow: "auth-code",
+    onSuccess: async (codeResponse) => {
+      console.log(codeResponse);
+    },
+    onError: (errorResponse) => {
+      console.log(errorResponse);
+    }
+  })
+
+  // function handleCallback(res) {
+  //   const creds = jwtDecode(res.credential);
+  //   // console.log(creds);
+  //   // console.log(creds.name);
+  //   const userObject = {
+  //     name: creds.name,
+  //     email: creds.email,
+  //   }
+  //   setUserCreds(userObject);
+  //   console.log(userCreds);
+  // }
+
   let linkClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-300 hover:text-cyan-300 mr-6 transition-colors duration-300";
   let activeClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-500 mr-6";
   let dropdownClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-300 mr-6 group cursor-pointer";
@@ -31,10 +72,8 @@ function Header() {
           </NavLink>
         </div>
         <div className="flex gap-3 items-center lg:order-last">
-          {/* <div className="">
-            <DarkModeToggle />
-          </div> */}
-          <NavLink to="/login" className="bg-palette2 text-white font-bold px-8 py-2 rounded-full shadow hover:text-palette5 transition-colors duration-300">Đăng nhập</NavLink>
+          {/* INFO: Google Sign-in button */}
+          <button onClick={codeLogin} className="bg-palette2 text-white font-bold px-8 py-2 rounded-full shadow hover:text-palette5 transition-colors duration-300">Đăng nhập với Google</button>
           <div className="lg:hidden">
             <button onClick={toggleClass} className="flex items-center px-3 py-2 border rounded text-black border-black">
               <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

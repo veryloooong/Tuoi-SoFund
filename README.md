@@ -21,6 +21,8 @@
 - react-router-dom
 - react-markdown
 - prop-types
+- jwt-decode
+- @react-oauth/google
 
 ## Commands
 
