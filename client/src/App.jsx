@@ -29,7 +29,7 @@ export default function App() {
           <Route path="/terms" element={<Pages mdpath="./md/terms.md" />} />
           <Route path="/todo" element={<Todo />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/donate" element={<ProjectPage />} />
+          <Route path="/donate/:projectId" element={<ProjectPage />} />
           <Route path="/payment/:status" element={<Payment />} />
           <Route path="*" element={<Error404 />} />
         </Route>

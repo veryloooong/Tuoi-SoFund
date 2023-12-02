@@ -23,6 +23,6 @@ public class Update {
 
   private Long projectId;
   private String content;
-  @JsonFormat(pattern = "yyyy-MM-dd")
+  @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate date;
 }

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const TextWrapper = ({ children }) => {
-    return <p1 className="text-xl text-white font-semibold text-justify">{children}</p1>
+    return <p className="text-xl text-white font-semibold text-justify">{children}</p>
 }
 
 TextWrapper.propTypes = {

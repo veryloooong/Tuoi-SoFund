@@ -1,27 +1,61 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 import DonateImg from "/src/images/cover-img.jpg";
 import UpdateItem from "/src/components/UpdateItem";
 import DonatorItem from "/src/components/DonatorItem";
 
+function isNum(str) {
+  if (typeof str != "string") return false // we only process strings!  
+  return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+    !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+}
+
 const Donate = () => {
-  // function calls are here (API calls, thanh toán backend qua QR hoặc api Momo gì đấy)
+  // handle non int ids
+  const { projectId } = useParams();
+  const navigate = useNavigate();
+
+  // INFO: From DB
+  const [projectInfo, setProjectInfo] = useState({});
+
+  async function getInfo() {
+    const apiUrl = import.meta.env.VITE_SERVER_API_URL + "/projects/" + projectId;
+
+    await axios.get(apiUrl)
+      .then((response) => {
+        console.log(response.data);
+        setProjectInfo(response.data);
+      })
+      .catch((err) => {
+        navigate("/404");
+      });
+  }
+
+  useEffect(() => {
+    if (!isNum(projectId)) {
+      navigate("/404");
+    }
+
+    getInfo();
+  }, []);
+
+
   const borderClass = "mx-auto border-2 border-gray-200 rounded-3xl p-6 space-y-2";
-  
-  // TODO: fetch DB
-  const currentFund = 20000000;
-  const goalFund = 200000000;
-  
+
+  const currentFund = projectInfo.currentFund;
+  const goalFund = projectInfo.goalFund;
+
   function calculatePercentage() {
     const percentFund = (currentFund < 0 ? 0.0 : (currentFund > goalFund ? 1.0 : currentFund / goalFund)) * 100;
     const percentString = percentFund.toString() + "%";
-    return {"width": percentString};
+    return { "width": percentString };
   }
-  
+
   const displayCurrentFund = Math.round(currentFund).toLocaleString();
   const displayGoalFund = Math.round(goalFund).toLocaleString();
-  
-  const navigate = useNavigate();
+
 
   // TODO: wire to API
   function todoClick(event) {
@@ -32,7 +66,7 @@ const Donate = () => {
   return (
     <div className="mb-10 pb-10 w-full mx-auto rounded-xl">
       <div className="absolute w-full py-5 mb-5 px-10 xl:px-20 bg-palette2 flex flex-row items-center content-center xl:justify-between">
-        <h1 className="text-xl text-left text-white font-semibold w-1/2 xl:w-2/3">Dự án ABC</h1>
+        <h1 className="text-xl text-left text-white font-semibold w-1/2 xl:w-2/3">{projectInfo.title}</h1>
         <div className="w-1/2 xl:w-1/3 flex flex-row gap-2 xl:gap-5">
           <button className="inline-block w-full xl:w-1/2 h-10 px-4 text-lg rounded-full bg-palette3 shadow-lg text-white hover:text-palette5 transition-colors" onClick={todoClick}>Đóng góp</button>
           <button className="inline-block w-full xl:w-1/2 h-10 px-4 text-lg rounded-full bg-palette1 shadow-lg text-white hover:text-palette5 transition-colors" onClick={todoClick}>Chia sẻ</button>
@@ -66,13 +100,12 @@ const Donate = () => {
               <div id="current-progress" style={calculatePercentage()} className="h-full bg-palette3 rounded-full"></div>
             </div>
             <p><span className="font-bold">Mục tiêu:</span> {displayGoalFund} VNĐ</p>
-            <p><span className="font-bold">Kết thúc:</span> 01/01/2024</p>
+            <p><span className="font-bold">Kết thúc:</span> {projectInfo.endDate}</p>
           </div>
           <br />
           <div className={borderClass}>
             <p className="text-justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum feugiat, libero non sagittis luctus, nisl diam rhoncus sapien, id condimentum lorem orci et erat. Integer euismod odio a nisl dignissim, a scelerisque lacus lacinia. Suspendisse eu nisl rutrum, venenatis urna vel, mollis neque. Suspendisse nec tincidunt lacus. Mauris ultricies eleifend ullamcorper. Nulla fermentum turpis ac tellus semper gravida. Morbi aliquam condimentum hendrerit. Phasellus maximus interdum libero, sed accumsan sem sodales nec. Mauris nisi leo, fermentum nec dui in, tincidunt dapibus massa.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi cumque tenetur blanditiis reiciendis, tempore laudantium maiores beatae aliquid repellat corporis accusamus totam. Ad rem omnis molestiae, sequi earum quidem consequatur.
+              {projectInfo.description}
               {/* <br className="hidden sm:block" /> */}
             </p>
             {/* <DonationForm /> */}

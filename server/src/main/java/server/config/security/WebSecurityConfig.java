@@ -13,20 +13,15 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-  // @Bean
-  // WebSecurityCustomizer webSecurityCustomizer() {
-  // return (web) -> web.ignoring().requestMatchers("/api/**");
-  // }
 
-  /*
-   * @Bean
-   * SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-   * http
-   * .authorizeHttpRequests((requests) -> requests
-   * .requestMatchers(HttpMethod.GET, "/")
-   * .anonymous());
-   * 
-   * return http.build();
-   * }
-   */
+  @Bean
+  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+        .authorizeHttpRequests((requests) -> requests
+            .requestMatchers(HttpMethod.GET, "/api/v1/**")
+            .anonymous());
+
+    return http.build();
+  }
+
 }

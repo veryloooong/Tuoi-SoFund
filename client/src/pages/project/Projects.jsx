@@ -1,31 +1,66 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectItem from "/src/components/ProjectItem";
 import ProjectsGrid from "/src/components/ProjectsGrid";
 import ProjectImage1 from "/src/images/proj-1.jpeg";
 import ProjectImage2 from "/src/images/proj-2.jpg";
 import ProjectImage3 from "/src/images/proj-3.jpg";
 
+import axios from "axios";
+
 const Projects = () => {
-  // TODO: fetch DB
-  const projectsList = ["Dự án ABC", "Dự án XYZ", "Dự án 123"];
+  // states
+  const [projectsDB, setProjectsDB] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [searchKey, setSearchKey] = useState("");
+
+  // fetch from DB
+  async function getData() {
+    const apiUrl = import.meta.env.VITE_SERVER_API_URL + "/projects/all";
+
+    await axios.get(apiUrl)
+      .then((response) => {
+        console.log("fetched from db " + response.data.length + " projects");
+
+        const data = response.data;
+        setProjectsDB(data.map((obj) => {
+          return {
+            id: obj.id,
+            title: obj.title,
+          }
+        }));
+        setProjects(data.map((obj) => {
+          return {
+            id: obj.id,
+            title: obj.title,
+          }
+        }))
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  // init once
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // INFO: temp
   const projectsImage = {
     "Dự án ABC": ProjectImage1,
     "Dự án XYZ": ProjectImage2,
     "Dự án 123": ProjectImage3,
   }
 
-  const [projects, setProjects] = useState(projectsList);
-  const [searchKey, setSearchKey] = useState("");
-
   function handleSearchClick() {
     if (searchKey === "") {
-      setProjects(projectsList);
+      setProjects(projectsDB);
     } else {
-      const filteredProjects = projectsList.filter((project) => {
-        if (project.toLowerCase().includes(searchKey.toLowerCase())) {
+      const filteredProjects = projectsDB.filter((project) => {
+        if (project.title.toLowerCase().includes(searchKey.toLowerCase())) {
           return project;
         }
-      });
+      })
       setProjects(filteredProjects);
     }
   }
@@ -39,10 +74,9 @@ const Projects = () => {
           <input className="w-full h-10 px-10 xl:px-6 rounded-2xl border-gray-400 border-2" placeholder="Nhập từ khóa..." onChange={e => { setSearchKey(e.target.value) }} onKeyUp={handleSearchClick} ></input>
         </div>
       </div>
-      {/* TODO: add some smart DB shit */}
       <ProjectsGrid>
         {projects.map((project) => (
-          <ProjectItem to="/donate" image={projectsImage[project]}>{project}</ProjectItem>
+          <ProjectItem key={project.id} id={project.id} image={projectsImage[project.title]}>{project.title}</ProjectItem>
         ))}
       </ProjectsGrid>
     </div>

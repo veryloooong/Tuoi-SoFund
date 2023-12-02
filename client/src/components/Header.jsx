@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../images/logo2.png";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
@@ -20,17 +20,6 @@ function Header() {
       console.log("Error")
     },
   });
-
-  const codeLogin = useGoogleLogin({
-    // INFO: cái này cần nối với backend để trả về access / refresh token
-    flow: "auth-code",
-    onSuccess: async (codeResponse) => {
-      console.log(codeResponse);
-    },
-    onError: (errorResponse) => {
-      console.log(errorResponse);
-    }
-  })
 
   let linkClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-300 hover:text-cyan-300 mr-6 transition-colors duration-300";
   let activeClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-500 mr-6";
@@ -62,7 +51,7 @@ function Header() {
         </div>
         <div className="flex gap-3 items-center lg:order-last">
           {/* INFO: Google Sign-in button */}
-          <button onClick={codeLogin} className="bg-palette2 text-white font-bold px-8 py-2 rounded-full shadow hover:text-palette5 transition-colors duration-300">Đăng nhập với Google</button>
+          <button onClick={login} className="bg-palette2 text-white font-bold px-8 py-2 rounded-full shadow hover:text-palette5 transition-colors duration-300">Đăng nhập với Google</button>
           <div className="lg:hidden">
             <button onClick={toggleClass} className="flex items-center px-3 py-2 border rounded text-black border-black">
               <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
