@@ -8,7 +8,7 @@ const News = () => {
 
   return (
     <div className="flex flex-col gap-4 place-content-center mt-10 px-4 md:px-20 pb-10">
-      <h1 className="text-4xl font-extrabold mb-8">Tin tức mới nhất</h1>
+      <h1 className="text-4xl font-extrabold mb-8 text-palette3">Tin tức mới nhất</h1>
       <NewsItem to="/todo" image={AboutImg1}></NewsItem>
       <NewsItem to="/todo" image={AboutImg2}></NewsItem>
       <NewsItem to="/todo" image={AboutImg3}></NewsItem>

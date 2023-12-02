@@ -1,30 +1,28 @@
-// TODO: Quan tâm sau
 package server.data;
+
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-import java.time.LocalDateTime;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 @Entity
 @Data
 @Accessors(chain = true)
-@Table(name = "donations")
-public class Donation {
+@Table(name = "updates")
+public class Update {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private Long amount;
-  @JsonFormat(pattern = "yyyy-MM-dd@HH:mm:ss")
-  private LocalDateTime donationTime;
-  private Long userId;
+
   private Long projectId;
+  private String content;
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private LocalDate date;
 }

@@ -15,7 +15,7 @@ import server.data.Project;
 import server.service.project.ProjectService;
 
 @Controller
-@RequestMapping(path = "/api/projects")
+@RequestMapping(path = "/api/v1/projects")
 public class ProjectController {
   @Autowired
   private ProjectService projectService;

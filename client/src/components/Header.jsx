@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../images/logo2.png";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
-import axios from "axios"; 
+import axios from "axios";
 
 function Header() {
   const login = useGoogleLogin({
@@ -13,14 +13,14 @@ function Header() {
         "https://www.googleapis.com/oauth2/v3/userinfo",
         { headers: { Authorization: `Bearer ${responseToken.access_token}` } }
       );
-      
+
       console.log(userInfo.data);
     },
     onError: () => {
       console.log("Error")
     },
   });
-  
+
   const codeLogin = useGoogleLogin({
     // INFO: cái này cần nối với backend để trả về access / refresh token
     flow: "auth-code",
@@ -32,21 +32,10 @@ function Header() {
     }
   })
 
-  // function handleCallback(res) {
-  //   const creds = jwtDecode(res.credential);
-  //   // console.log(creds);
-  //   // console.log(creds.name);
-  //   const userObject = {
-  //     name: creds.name,
-  //     email: creds.email,
-  //   }
-  //   setUserCreds(userObject);
-  //   console.log(userCreds);
-  // }
-
   let linkClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-300 hover:text-cyan-300 mr-6 transition-colors duration-300";
   let activeClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-500 mr-6";
-  let dropdownClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-300 mr-6 group cursor-pointer";
+  let groupClassName = " group cursor-pointer";
+  let dropdownClassName = linkClassName + groupClassName;
 
   let navCloseClassName = "w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block";
   let navOpenClassName = "w-full block flex-grow lg:flex lg:items-center lg:w-auto lg:block open-nav h-screen lg:h-max";

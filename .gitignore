@@ -7,3 +7,6 @@
 
 # sql session
 /*.session.sql
+
+# auth client secrets
+/*secret.json

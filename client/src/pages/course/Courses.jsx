@@ -36,10 +36,9 @@ const Courses = () => {
       <div className="flex flex-col xl:flex-row justify-between mb-5 gap-4">
         <h1 className="text-4xl font-extrabold text-center lg:text-left  text-palette3">Phát triển dự án</h1>
         {/* TODO: add search icon */}
-        <div className="w-full xl:w-1/4 flex flex-row gap-3">
-          {/* search logic goes here */}
-          <input className="w-2/3 h-10 px-2 rounded-2xl border-gray-400 border-2" placeholder="Nhập từ khóa..." onChange={e => { setSearchKey(e.target.value) }} onKeyUp={e => { if (e.key === "Enter") { handleSearchClick() } }}></input>
-          <button className="w-1/3 h-10 rounded-2xl bg-palette1 font-semibold text-white" onClick={handleSearchClick}>Tìm kiếm</button>
+        <div className="w-full xl:w-1/5 flex flex-row items-center gap-3">
+          <svg className="h-4 absolute pl-4 xl:pl-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
+          <input className="w-full h-10 px-10 xl:px-6 rounded-2xl border-gray-400 border-2" placeholder="Nhập từ khóa..." onChange={e => { setSearchKey(e.target.value) }} onKeyUp={handleSearchClick} ></input>
         </div>
       </div>
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
@@ -60,7 +59,6 @@ const Courses = () => {
           </CoursesGrid>
           {/* khóa ở ngoài */}
           <CoursesGrid title="Khóa học của đối tác">
-            <CourseItem to="/todo" image={CourseImage3}>Khóa 3</CourseItem>
           </CoursesGrid>
         </div>
         {/* news */}

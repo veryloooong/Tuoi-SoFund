@@ -13,6 +13,9 @@ export default {
         'palette4': '#80ed99',
         'palette5': '#c7f9cc',
       },
+      transitionProperty: {
+        'height': 'height',
+      }
     },
   },
   plugins: [],
