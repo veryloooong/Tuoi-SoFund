@@ -13,6 +13,8 @@ import AboutUs from "./pages/static/AboutUs";
 import Projects from "./pages/project/Projects";
 import Courses from "./pages/course/Courses";
 import Login from "./pages/login/Login";
+import SocialPage from "./social/SocialPage";
+import RankingPage from "./social/RankingPage";
 
 export default function App() {
   return (
@@ -31,6 +33,8 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/donate/:projectId" element={<ProjectPage />} />
           <Route path="/payment/:status" element={<Payment />} />
+          <Route path="/community" element={<SocialPage />} />
+          <Route path="/ranking" element={<RankingPage />} />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

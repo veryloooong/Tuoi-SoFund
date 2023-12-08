@@ -28,6 +28,7 @@ public class Project {
   private LocalDate startDate;
   @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate endDate;
+  private String provider;
   private Long currentFund;
   private Long goalFund;
 }

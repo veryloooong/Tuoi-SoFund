@@ -4,10 +4,12 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import server.data.User;
 import server.repository.user.UserRepository;
 
+@Service
 public class UserService implements IUserService {
   @Autowired
   private UserRepository userRepository;

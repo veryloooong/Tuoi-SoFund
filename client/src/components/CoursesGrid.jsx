@@ -1,4 +1,4 @@
-import {PropTypes} from "prop-types";
+import { PropTypes } from "prop-types";
 
 const CoursesGrid = ({ title, children }) => {
   return (
@@ -16,7 +16,7 @@ const CoursesGrid = ({ title, children }) => {
 
 CoursesGrid.propTypes = {
   title: PropTypes.string,
-  children: PropTypes.string
+  children: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default CoursesGrid;

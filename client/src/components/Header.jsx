@@ -21,10 +21,17 @@ function Header() {
     },
   });
 
+  const onSuccess = (response) => {
+    console.log(response);
+  }
+
+  const onError = (res) => {
+    console.log("Failed");
+    console.log(res);
+  }
+
   let linkClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-300 hover:text-cyan-300 mr-6 transition-colors duration-300";
   let activeClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-500 mr-6";
-  let groupClassName = " group cursor-pointer";
-  let dropdownClassName = linkClassName + groupClassName;
 
   let navCloseClassName = "w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block";
   let navOpenClassName = "w-full block flex-grow lg:flex lg:items-center lg:w-auto lg:block open-nav h-screen lg:h-max";
@@ -52,6 +59,7 @@ function Header() {
         <div className="flex gap-3 items-center lg:order-last">
           {/* INFO: Google Sign-in button */}
           <button onClick={login} className="bg-palette2 text-white font-bold px-8 py-2 rounded-full shadow hover:text-palette5 transition-colors duration-300">Đăng nhập với Google</button>
+          {/* <GoogleLogin onSuccess={onSuccess} onError={onError} /> */}
           <div className="lg:hidden">
             <button onClick={toggleClass} className="flex items-center px-3 py-2 border rounded text-black border-black">
               <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -67,14 +75,18 @@ function Header() {
             <NavLink to="/projects" className={({ isActive }) => (isActive ? activeClassName : linkClassName)}>
               Đóng góp
             </NavLink>
-            <div className={dropdownClassName}>
-              <p>Dành cho dự án</p>
-              <br className="lg:hidden" />
-              <div className="lg:invisible lg:absolute flex flex-col gap-4 lg:gap-0 -my-3 lg:my-0 lg:py-1 px-4 rounded group-hover:visible lg:bg-palette3 lg:shadow">
-                <NavLink to="/addproject" className="my-2 block lg:text-white">Dự án muốn kêu gọi</NavLink>
-                <NavLink to="/courses" className="my-2 block lg:text-white">Phát triển dự án</NavLink>
-              </div>
-            </div>
+            <NavLink to="/addproject" className={({ isActive }) => (isActive ? activeClassName : linkClassName)}>
+              Dự án muốn kêu gọi
+            </NavLink>
+            <NavLink to="/courses" className={({ isActive }) => (isActive ? activeClassName : linkClassName)}>
+              Khóa học
+            </NavLink>
+            <NavLink to="/community" className={({ isActive }) => (isActive ? activeClassName : linkClassName)}>
+              Cộng đồng
+            </NavLink>
+            <NavLink to="/ranking" className={({ isActive }) => (isActive ? activeClassName : linkClassName)}>
+              Vinh danh
+            </NavLink>
             <NavLink to="/news" className={({ isActive }) => (isActive ? activeClassName : linkClassName)}>
               Tin tức
             </NavLink>

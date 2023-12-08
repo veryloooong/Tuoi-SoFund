@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CourseItem from "/src/components/CourseItem";
 import CourseImage1 from "/src/images/course-1.jpeg";
 import CourseImage2 from "/src/images/course-2.jpeg";
@@ -7,23 +7,51 @@ import NewsItem from "/src/components/NewsItem";
 import NewsImage1 from "/src/images/news-1.jpg";
 import NewsImage2 from "/src/images/news-2.jpg";
 import CoursesGrid from "/src/components/CoursesGrid";
+import axios from "axios";
 
 const Courses = () => {
-  const coursesList = ["Khóa 1", "Khóa 2"];
+  // INFO: states
+  const [coursesDB, setCoursesDB] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [searchKey, setSearchKey] = useState("");
+
+  async function getData() {
+    const apiUrl = import.meta.env.VITE_SERVER_API_URL + "/courses/all";
+
+    await axios.get(apiUrl)
+      .then((response) => {
+        const data = response.data.map((obj) => {
+          return {
+            id: obj.id,
+            title: obj.title,
+            provider: obj.provider
+          }
+        });
+
+        setCoursesDB(data);
+        setCourses(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   const coursesImages = {
     "Khóa 1": CourseImage1,
     "Khóa 2": CourseImage2,
   }
 
-  const [courses, setCourses] = useState(coursesList);
-  const [searchKey, setSearchKey] = useState("");
 
   function handleSearchClick() {
     if (searchKey === "") {
-      setCourses(coursesList);
+      setCourses(coursesDB);
     } else {
-      const filteredCourses = coursesList.filter((course) => {
-        if (course.toLowerCase().includes(searchKey.toLowerCase())) {
+      const filteredCourses = coursesDB.filter((course) => {
+        if (course.title.toLowerCase().includes(searchKey.toLowerCase())) {
           return course;
         }
       });
@@ -53,12 +81,23 @@ const Courses = () => {
                         </div>
                     </div> */}
           <CoursesGrid title="Khóa học của Tưới">
-            {courses.map((course) => (
-              <CourseItem to="/todo" image={coursesImages[course]}>{course}</CourseItem>
+            {courses.filter((course) => {
+              if (course.provider === "Tưới SoFund") {
+                return course;
+              }
+            }).map((course) => (
+              <CourseItem to="/todo" id={course.id} image={coursesImages[course.title]}>{course.title}</CourseItem>
             ))}
           </CoursesGrid>
           {/* khóa ở ngoài */}
           <CoursesGrid title="Khóa học của đối tác">
+            {courses.filter((course) => {
+              if (course.provider !== "Tưới SoFund") {
+                return course;
+              }
+            }).map((course) => (
+              <CourseItem key={course.id} to="/todo" id={course.id} image={coursesImages[course.title]}>{course.title}</CourseItem>
+            ))}
           </CoursesGrid>
         </div>
         {/* news */}

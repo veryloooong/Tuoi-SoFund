@@ -25,7 +25,6 @@ const Donate = () => {
 
     await axios.get(apiUrl)
       .then((response) => {
-        console.log(response.data);
         setProjectInfo(response.data);
       })
       .catch((err) => {
