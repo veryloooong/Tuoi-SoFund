@@ -1,34 +1,19 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../images/logo2.png";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
 function Header() {
   const login = useGoogleLogin({
-    // INFO: Cái này là implicit flow, không nối được với backend
-    onSuccess: async (responseToken) => {
-      console.log(responseToken);
-      const userInfo = await axios.get(
-        "https://www.googleapis.com/oauth2/v3/userinfo",
-        { headers: { Authorization: `Bearer ${responseToken.access_token}` } }
-      );
+    flow: "auth-code",
+    onSuccess: async (res) => {
+      // TODO
 
-      console.log(userInfo.data);
+      console.log("lol");
     },
-    onError: () => {
-      console.log("Error")
-    },
+    onError: (err) => console.log(err),
   });
-
-  const onSuccess = (response) => {
-    console.log(response);
-  }
-
-  const onError = (res) => {
-    console.log("Failed");
-    console.log(res);
-  }
 
   let linkClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-300 hover:text-cyan-300 mr-6 transition-colors duration-300";
   let activeClassName = "block text-2xl lg:text-xl lg:inline-block mt-8 lg:mt-0 text-emerald-500 mr-6";

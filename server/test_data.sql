@@ -1,6 +1,7 @@
 INSERT INTO projects(
     id,
     title,
+    provider,
     description,
     start_date,
     end_date,
@@ -9,6 +10,7 @@ INSERT INTO projects(
 VALUES (
     1,
     'Dự án ABC',
+    'Tưới SoFund',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacinia libero ipsum, eget tempus tortor volutpat pretium. Sed velit lacus, feugiat quis diam non, ultricies pulvinar ex. Fusce scelerisque pellentesque metus, eu vestibulum est porta sit amet. Sed iaculis luctus leo, sollicitudin dapibus nisi accumsan vitae. Duis eleifend, diam ut egestas interdum, metus ipsum posuere ex, sit amet efficitur nunc magna mattis nisi. Integer fermentum non enim quis ultricies. Phasellus sed consequat est, ac ullamcorper mi. Integer ac odio porta, convallis mi vitae, aliquet tortor. Curabitur efficitur et quam et vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla sed dolor nibh. Sed efficitur vel quam et tincidunt.',
     '2023-01-01',
     '2024-01-01',
@@ -17,6 +19,7 @@ VALUES (
 INSERT INTO projects(
     id,
     title,
+    provider,
     description,
     start_date,
     end_date,
@@ -25,6 +28,7 @@ INSERT INTO projects(
 VALUES (
     2,
     'Dự án XYZ',
+    'ABCXYZ',
     'Suspendisse sed sem maximus, tincidunt erat et, euismod magna. Praesent nulla nulla, convallis eget tincidunt nec, pretium sed felis. Aenean varius neque sed lorem sollicitudin pharetra. Nam felis ex, aliquet at ligula in, accumsan venenatis ex. Duis porttitor feugiat neque, eget mollis felis dictum efficitur. Proin dignissim ante mauris, a tincidunt elit fermentum in. In hac habitasse platea dictumst. Nunc dignissim arcu eget velit malesuada convallis. Aliquam congue tempor dui, non elementum orci lacinia vitae.',
     '2023-06-01',
     '2023-12-31',
@@ -33,6 +37,7 @@ VALUES (
 INSERT INTO projects(
     id,
     title,
+    provider,
     description,
     start_date,
     end_date,
@@ -41,6 +46,7 @@ INSERT INTO projects(
 VALUES (
     3,
     'Dự án 123',
+    'lol',
     'Sed libero magna, venenatis in diam in, elementum consectetur ipsum. Vivamus dictum elit felis, vel finibus purus euismod nec. Duis volutpat id diam non elementum. Etiam placerat tristique ultrices. Morbi fringilla feugiat velit, eget tincidunt turpis pellentesque rhoncus. Etiam vehicula risus ut lectus porta pulvinar. Nulla vel libero in turpis iaculis efficitur ac in est. Vivamus rutrum auctor metus, non pellentesque augue. Donec eleifend lacus mi, non porttitor nibh dictum sit amet.',
     '2023-11-25',
     '2025-01-01',

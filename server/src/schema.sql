@@ -47,7 +47,7 @@ CREATE OR REPLACE TABLE updates (
     id SERIAL PRIMARY KEY,
     project_id BIGINT UNSIGNED NOT NULL,
     content TEXT,
-    update_time DATE,
+    update_time TIMESTAMP,
     FOREIGN KEY (project_id) REFERENCES projects(id)
   );
 CREATE OR REPLACE TABLE posts (

@@ -23,12 +23,12 @@ public class Project {
   private Long id;
 
   private String title;
+  private String provider;
   private String description;
   @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate startDate;
   @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate endDate;
-  private String provider;
   private Long currentFund;
   private Long goalFund;
 }
