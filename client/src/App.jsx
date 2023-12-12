@@ -13,8 +13,8 @@ import AboutUs from "./pages/static/AboutUs";
 import Projects from "./pages/project/Projects";
 import Courses from "./pages/course/Courses";
 import Login from "./pages/login/Login";
-import SocialPage from "./social/SocialPage";
-import RankingPage from "./social/RankingPage";
+import SocialPage from "./pages/social/SocialPage";
+import RankingPage from "./pages/social/RankingPage";
 
 export default function App() {
   return (
